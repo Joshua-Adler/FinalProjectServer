@@ -86,9 +86,9 @@ def patch_project():
 @api.delete('/project')
 def delete_project():
 	token = request.args.get('token')
-	project_id = request.args.get('project_id')
+	project_id = request.args.get('id')
 	if not token or not project_id:
-		return make_response('token and project_id must be provided', 400)
+		return make_response('token and id must be provided', 400)
 	user = User.from_token(token)
 	if not user:
 		return make_response('invalid or expired token', 401)
